@@ -1,0 +1,17 @@
+<div class="services-container">
+  @for (service of Services; track service.ID) {
+    <div class="service-card">
+      @if (service.image) {
+        <img [src]="service.image" alt="{{ service.Title }}" class="service-image">
+      } @else {
+        <div class="image-placeholder">سيتم إضافة صورة قريبًا</div>
+      }
+      <h2 class="service-title">{{ service.Title }}</h2>
+      <ul class="service-description">
+        @for (desc of service.Description; track desc) {
+          <li>{{ desc }}</li>
+        }
+      </ul>
+    </div>
+  }
+</div>

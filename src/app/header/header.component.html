@@ -1,0 +1,16 @@
+<header class="d-flex justify-content-between align-items-center p-3 text-light">
+  <div class="icon">
+    <h2><a href="#">Byte Care</a></h2>
+  </div>
+
+
+  <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+
+  <div class="links-container" [class.active]="isMenuOpen">
+    <ul class="d-flex align-items-center">
+      <li><a class="m-2" href="#" (click)="onSelect('home')">الصفحه الرئيسيه</a></li>
+      <li><a class="m-2" href="#" (click)="onSelect('services')">خدماتنا</a></li>
+      <li><a class="m-2 btn btn-primary" href="#">اتصل بنا</a></li>
+    </ul>
+  </div>
+</header>
