@@ -69,6 +69,7 @@ a {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
+    z-index: 10000;
   }
 
   .links-container.active {
