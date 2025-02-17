@@ -29,35 +29,37 @@
 .services-container {
   display: flex;
   align-items: center;
-  gap: 20px; /* المسافة بين العنوان والقائمة */
+  gap: 20px;
 }
 
 .services-title {
   font-size: 2em;
-  margin: 0; /* إزالة الهامش لتجنب التباعد غير المرغوب فيه */
+  margin: 0;
 }
 
 .services-list {
   display: flex;
   flex-direction: row;
-  gap: 15px; /* المسافة بين العناصر */
-  flex-wrap: wrap; /* لجعل العناصر تنتقل إلى سطر جديد إذا لم يكن هناك مساحة كافية */
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .services-list span {
   position: relative;
   color: rgba(255, 255, 255, 0.1);
   font-size: 1.5em;
-  animation: displayText 15s infinite;
+  animation: displayText 18s infinite;
   animation-delay: calc(-3s * var(--i));
   white-space: nowrap;
 }
 
+
+/* Add this CSS to fix Firefox issues */
 @keyframes displayText {
   0% {
     display: inline;
   }
-  20%, 100% {
+  16.666666666%, 100% {
     display: none;
   }
 }
@@ -69,11 +71,32 @@
   color: #A78BFA;
   overflow: hidden;
   border-left: 4px solid #A78BFA;
-  filter: drop-shadow(0px 0px 5px #A78BFA) drop-shadow(0px 0px 25px #A78BFA);
   animation: animationText 3s linear infinite;
   right: 0;
 }
 
+/* Ensure Safari/Chrome compatibility */
+@keyframes animationText {
+  0%, 10%, 100% {
+    width: 0%;
+  }
+  70%, 90% {
+    width: 100%;
+  }
+}
+
+.services-list span::before {
+  content: attr(data-text);
+  position: absolute;
+  width: 0%;
+  color: #A78BFA;
+  overflow: hidden;
+  border-left: 4px solid #A78BFA;
+  animation: animationText 3s linear infinite;
+  right: 0;
+}
+
+/* To make sure transforms work correctly */
 @keyframes animationText {
   0%, 10%, 100% {
     width: 0%;
@@ -116,5 +139,97 @@
     margin-left: 0;
     margin-top: 20px;
     max-width: 100%;
+  }
+}
+
+/* General Tech Button Styling */
+.tech-btn {
+  font-size: 1.2rem;
+  padding: 15px 50px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: 2px solid #A78BFA;
+  width: 250px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover Effect */
+.tech-btn:hover {
+  background-color: #A78BFA;
+  color: #1a1a1a;
+  box-shadow: 0 0 20px #A78BFA;
+}
+
+.tech-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.4), transparent);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.tech-btn:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Specific Button Animations */
+.services-btn {
+  animation: glow-pulse 3s infinite;
+}
+
+.contact-btn {
+  animation: slide-border 3s infinite;
+}
+
+/* Glow Pulse Animation */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 10px #A78BFA;
+  }
+  50% {
+    box-shadow: 0 0 20px #A78BFA;
+  }
+}
+
+/* Sliding Border Animation */
+@keyframes slide-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.contact-btn {
+  background: linear-gradient(90deg, #1a1a1a, #1a1a1a, #A78BFA, #1a1a1a, #1a1a1a);
+  background-size: 200% 100%;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tech-btn {
+    width: 80%;
+    padding: 12px 30px;
+    font-size: 1rem;
+    margin: 10px 0;
   }
 }

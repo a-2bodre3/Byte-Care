@@ -1,8 +1,8 @@
 <app-header (Selected)="onNavigate($event)" />
 <div class="home" >
   @if (activeComponent==='home'){
-    <app-home/>
+    <app-home (Selected)="onNavigate($event)" />
   } @else if (activeComponent==='services'){
-    <app-services/>
+    <app-services  (Selected)="onNavigate($event)"/>
   }
 </div>

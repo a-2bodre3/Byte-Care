@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {ServicesName} from './services-name';
 
 @Component({
@@ -9,5 +9,8 @@ import {ServicesName} from './services-name';
 })
 export class ServicesComponent {
   Services = ServicesName;
-
+  @Output() Selected = new EventEmitter<string>();
+  onSelect(componentName:string){
+    this.Selected.emit(componentName);
+  }
 }

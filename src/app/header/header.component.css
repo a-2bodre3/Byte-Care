@@ -91,3 +91,84 @@ a {
     bottom: -5px !important;
   }
 }
+
+
+
+/* General Tech Button Styling */
+.tech-btn {
+  font-size: 1.2rem; /* Larger text */
+  padding: 15px 50px; /* Wider button size */
+  border-radius: 8px; /* Rounded corners */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  background-color: #1a1a1a; /* Dark background color */
+  color: #ffffff; /* White text color */
+  border: 2px solid #A78BFA; /* Border color */
+  width: 200px; /* Fixed width for consistency */
+  text-align: center; /* Center text */
+  position: relative; /* For hover effects */
+  overflow: hidden; /* Hide overflow for animations */
+}
+
+/* Hover Effect */
+.tech-btn:hover {
+  background-color: #A78BFA; /* Effect color on hover */
+  color: #1a1a1a; /* Dark text color on hover */
+  box-shadow: 0 0 20px #A78BFA; /* Glow effect */
+}
+
+/* Modern Tech Animation (Border Glow) */
+.tech-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.4), transparent);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.5s ease;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.tech-btn:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Specific Button Animations */
+.services-btn {
+  animation: glow-pulse 3s infinite; /* Subtle glow pulse */
+}
+
+.contact-btn {
+  animation: slide-border 3s infinite; /* Sliding border effect */
+}
+
+/* Glow Pulse Animation */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 10px #A78BFA;
+  }
+  50% {
+    box-shadow: 0 0 20px #A78BFA;
+  }
+}
+
+/* Sliding Border Animation */
+@keyframes slide-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.contact-btn {
+  background: linear-gradient(90deg, #1a1a1a, #1a1a1a, #A78BFA, #1a1a1a, #1a1a1a);
+  background-size: 200% 100%;
+  border: 2px solid #A78BFA;
+}
